@@ -4,39 +4,54 @@ import "./App.css";
 
 const namelists = [
   {
-    name: "Hari",
-    address: "KTM",
-    age: 24
+    name: "Product 1",
+    price: 240
   },
   {
-    name: "Shyam",
-    address: "Kalanki",
-    age: 26
+    name: "Product 2",
+    price: 260
+  },
+  {
+    name: "Product 3",
+    price: 2630
+  },
+  {
+    name: "Product 4",
+    price: 1260
   }
 ];
+
+const info = {
+  name: "Arjun",
+  address: "KTM"
+};
+
+const filterArray = namelists.filter(function(info) {
+  return info.name !== "Hari";
+});
+
+console.log(filterArray);
 
 function App() {
   return (
     <div>
-      <ul>
-        {namelists
-          .filter(function(info) {
-            return info.address !== "KTM";
-          })
-          .map(function(info) {
-            return (
-              <li>
-                Name : {info.name} <br />
-                Address: {info.address} <br />
-                Age: {info.age}
-              </li>
-            );
-          })}
-      </ul>
+      {/* {info["name"]}
+      {info.address} */}
+      {/* <ul>
+        {filterArray.map(function(info) {
+          return (
+            <li>
+              Name : {info.name} <br />
+              Address: {info.address} <br />
+              Age: {info.age}
+            </li>
+          );
+        })}
+      </ul> */}
       <h2>
         Total Age :
-        {namelists.reduce(function(sum, value) {
-          return (sum += value.age);
+        {namelists.reduce(function(sum, info) {
+          return (sum += info.price);
         }, 0)}
       </h2>
       {/* 

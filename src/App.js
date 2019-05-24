@@ -1,24 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+const namelists = [
+  {
+    name: "Hari",
+    address: "KTM",
+    age: 24
+  },
+  {
+    name: "Shyam",
+    address: "Kalanki",
+    age: 26
+  }
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ul>
+        {namelists
+          .filter(function(info) {
+            return info.address !== "KTM";
+          })
+          .map(function(info) {
+            return (
+              <li>
+                Name : {info.name} <br />
+                Address: {info.address} <br />
+                Age: {info.age}
+              </li>
+            );
+          })}
+      </ul>
+      <h2>
+        Total Age :
+        {namelists.reduce(function(sum, value) {
+          return (sum += value.age);
+        }, 0)}
+      </h2>
+      {/* 
+      <ul>
+        {namelists.map(function(info) {
+          return (
+            <li>
+              Name : {info.name} <br />
+              Address: {info.address} <br />
+              Age: {info.age}
+            </li>
+          );
+        })}
+      </ul> */}
     </div>
   );
 }
